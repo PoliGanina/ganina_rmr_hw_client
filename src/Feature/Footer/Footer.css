@@ -1,0 +1,10 @@
+.footer {
+    padding: 30px;
+    position: sticky;
+    top: 100%;
+    background-color: rgb(157, 243, 243);
+}
+.footer .footer__placeholder {
+    margin: 0;
+    text-align: center;
+}
