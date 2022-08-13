@@ -1,7 +1,8 @@
 import logoPlaceholder from './../../UI library/logoplaceholder.svg';
-import './Header.scss';
+import { Link } from 'react-router-dom';
+import './header.scss';
 
-const Header = () => {
+const Header = ({isAuth}) => {
   return (
     <header className="header">
       <a className="header__logo" href="#">
@@ -14,15 +15,28 @@ const Header = () => {
           <li className="header__menu-item"><a className="header__menu-link" href="#">Documentation</a></li>
       </menu>
 
-      <div>Personal Account</div>
+    {isAuth ? <PersonalAccount/> : 
+        <Link 
+        exact="true" 
+        to='/'
+        className="header__signin"
+        >Sign in</Link>}
     </header>
   );
 };
 
 export default Header;
 
-const PersonalAccount = ({userName}) => {
+const PersonalAccount = ({userName='dear User'}) => {
     return(
-        <h2 className="header__personal-account">`Hi ${userName}!`</h2>
+        <div className="header__personal-account">
+        <p>Hi {userName}!</p>
+        <Link 
+        exact="true" 
+        to='/'
+        className="header__logout"
+        >Logout</Link>
+        </div>
+        
     )
 }
