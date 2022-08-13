@@ -1,6 +1,6 @@
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
-import './form.scss';
+import "./form.scss";
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -15,6 +15,7 @@ const MyTextInput = ({ label, ...props }) => {
   );
 };
 
+
 const FormComponent = () => {
   return (
     <Formik
@@ -24,11 +25,24 @@ const FormComponent = () => {
         password: "",
       }}
       validationSchema={Yup.object({
-        email: Yup.string().email('Email format should be "example@mailbox.com"').required("this field is required"),
-        phone: Yup.string().required("this field is required"),
+        email: Yup.string()
+          .email('Email format should be "example@mailbox.com"')
+          .required("this field is required"),
+        phone: Yup.string()
+          .matches(/^[0-9\+/]+$/g, "Phone number must contain digits only")
+          .test("country-validation", "Russian Federation and Mongolia only", function (value = '+7') {
+            return (
+              value.indexOf("+976") === 0 ||
+              value.indexOf("976") === 0 ||
+              value.indexOf("8") === 0 ||
+              value.indexOf("+7") === 0
+            );
+          })
+          .min(11, "Please check the phone number")
+          .required("this field is required"),
         password: Yup.string()
           .min(4, "Min 4 symbols")
-          .matches(/[^A-Za-z0-9А-Яа-я]+/g)
+          .matches(/^[a-zA-Z0-9А-Яа-я]*$/g, "Password should contain letters and digits only")
           .required("this field is required"),
       })}
       onSubmit={(values) => console.log(JSON.stringify(values, null, 2))}
