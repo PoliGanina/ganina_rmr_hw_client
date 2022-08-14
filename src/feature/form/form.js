@@ -4,7 +4,7 @@ import { MyTextInput } from "../../UI library/myTextInput";
 import { VALIDATION_SCHEMA } from "./form.consts";
 import "./form.scss";
 
-const FormComponent = () => {
+const FormComponent = ({onSubmit}) => {
   return (
     <Formik
       initialValues={{
@@ -12,8 +12,8 @@ const FormComponent = () => {
         phone: "",
         password: "",
       }}
-      validationSchema={VALIDATION_SCHEMA}
-      onSubmit={login}
+      validationSchema={ VALIDATION_SCHEMA }
+      onSubmit={onSubmit}
     >
       <Form className="form">
         <h1>login</h1>
