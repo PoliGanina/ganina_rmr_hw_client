@@ -16,7 +16,7 @@ const RouterComponent = ({user, handleLogin}) => {
   </Routes>;
 };
 
-const ProtectedRoute = ({ user, children }) => {
+export const ProtectedRoute = ({ user, children }) => {
   if (!user) {
     return <Navigate to="/" replace />;
   }

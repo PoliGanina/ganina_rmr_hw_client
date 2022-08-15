@@ -7,12 +7,12 @@ import axios from "axios";
 
 export const login = (formValues) => {
   try {
-    axios.post("http://51.250.65.73/api/v1/login", formValues).then(async (res) => {
+    axios.post("/api/v1/login", formValues).then(async (res) => {
       if (res.status === 200) {
         console.log(res.status);
 
         const profile = await axios.get(
-          "http://51.250.65.73/api/v1/profile"
+          "/api/v1/profile"
         );
         console.log(profile.data);
         return profile.data;
@@ -25,7 +25,7 @@ export const login = (formValues) => {
 
 export const logout = () => {
   axios
-    .post("http://51.250.65.73/api/v1/logout")
+    .post("/api/v1/logout")
     .then((res) => {
       console.log(res);
     })

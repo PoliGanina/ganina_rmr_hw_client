@@ -1,4 +1,4 @@
-import FormComponent from '../../feature/form/form';
+import FormComponent from '../../features/form/form';
 
 const LoginPage = ({handleLogin}) => {
     return (
