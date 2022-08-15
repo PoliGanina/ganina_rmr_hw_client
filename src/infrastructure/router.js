@@ -2,17 +2,17 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import KittyPage from "../screens/kittyPage/kittyPage";
 import LoginPage from "../screens/loginPage/loginPage";
 
-const RouterComponent = ({ user }) => {
+const RouterComponent = ({user, handleLogin}) => {
   <Routes>
-    <Route path="/" element={<LoginPage />} />
-    <Route
+    <Route index element={<LoginPage handleLogin={handleLogin}/>} />
+    {/* <Route
       path="/kitty"
       element={
         <ProtectedRoute user={user}>
           <KittyPage />
         </ProtectedRoute>
       }
-    />
+    /> */}
   </Routes>;
 };
 

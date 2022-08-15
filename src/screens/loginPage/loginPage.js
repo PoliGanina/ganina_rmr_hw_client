@@ -1,11 +1,8 @@
-import { useState } from 'react';
 import FormComponent from '../../feature/form/form';
-import { login } from '../../infrastructure/services';
 
-const LoginPage = () => {
-    
+const LoginPage = ({handleLogin}) => {
     return (
-        <FormComponent/>
+          <FormComponent onSubmit={handleLogin}/>
     )
 }
 

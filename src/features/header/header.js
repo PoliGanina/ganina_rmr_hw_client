@@ -1,9 +1,8 @@
 import logoPlaceholder from './../../UI library/logoplaceholder.svg';
 import { Link } from 'react-router-dom';
 import './header.scss';
-import { logout } from '../../infrastructure/services';
 
-const Header = ({user}) => {
+const Header = ({user, handleLogout}) => {
   return (
     <header className="header">
       <a className="header__logo" href="#">
@@ -16,9 +15,8 @@ const Header = ({user}) => {
           <li className="header__menu-item"><a className="header__menu-link" href="#">Documentation</a></li>
       </menu>
 
-    { user ? <PersonalAccount user={user}/> : 
+    { user ? <PersonalAccount user={user} handleLogout={handleLogout}/> : 
         <Link 
-        exact="true" 
         to='/'
         className="header__signin"
         >Sign in</Link>}
@@ -28,15 +26,14 @@ const Header = ({user}) => {
 
 export default Header;
 
-const PersonalAccount = ({name ='dear User'}) => {
+const PersonalAccount = ({name ='dear User', handleLogout}) => {
     return(
         <div className="header__personal-account">
         <p>Hi {name}!</p>
         <Link 
-        exact="true" 
         to='/'
         className="header__logout"
-        onClick={logout}
+        onClick={handleLogout}
         >Logout</Link>
         </div>
         
