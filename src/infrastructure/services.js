@@ -1,18 +1,26 @@
 import axios from "axios";
 
-export const login = ({ email, phone, password }) => {
-  axios
-    .post("http://51.250.65.73/api/v1/login", {
-      email,
-      password,
-      phone,
-    })
-    .then((res) => {
-      console.log(res.status);
-    })
-    .catch(function (error) {
-      throw new Error (error)
+// const instance = axios.create({
+//   withCredentials: true,
+//   baseURL: "http://51.250.65.73/api/v1",
+// });
+
+export const login = (formValues) => {
+  try {
+    axios.post("http://51.250.65.73/api/v1/login", formValues).then(async (res) => {
+      if (res.status === 200) {
+        console.log(res.status);
+        
+        const profile = await axios.get(
+          "http://51.250.65.73/api/v1/profile"
+        );
+        console.log(profile.data);
+        return profile.data;
+      }
     });
+  } catch (error) {
+    alert("Sorry, you are not registered");
+  }
 };
 
 export const logout = () => {
@@ -24,8 +32,4 @@ export const logout = () => {
     .catch(function (error) {
       console.log(error);
     });
-};
-
-export const profile = () => {
-  return axios.get("http://51.250.65.73/api/v1/login");
 };

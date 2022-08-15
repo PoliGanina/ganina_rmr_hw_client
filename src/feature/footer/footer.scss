@@ -25,6 +25,9 @@
         transition: all 1.5s;
         transform: scale(1.2) rotate(-45deg);
     }
+    @media (max-width: 767px) {
+        display: none;
+    }
 }
 .footer__graphic-2 {
     position: absolute;
@@ -40,5 +43,8 @@
     &:hover {
         transition: all 1.5s;
         transform: scale(1.2);
+    }
+    @media (max-width: 767px) {
+        display: none;
     }
 }
