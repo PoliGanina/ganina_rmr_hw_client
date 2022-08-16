@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate, Link } from "react-router-dom";
+import NoAccessMessage from "../features/no-access/noAccessMessage";
 import ContentPage from "../screens/contentPage.js/contentPage";
 import LoginPage from "../screens/loginPage/loginPage";
 
@@ -19,9 +20,7 @@ import LoginPage from "../screens/loginPage/loginPage";
 export const ProtectedRoute = ({ user, children }) => {
   if (!user) {
     return (
-      <Link to="*" className="header__signin">
-        Sign in
-      </Link>
+        <NoAccessMessage/>
     );
   }
 

@@ -18,8 +18,8 @@ const Header = ({user, handleLogout}) => {
     { user ? <PersonalAccount name={user.name} handleLogout={handleLogout}/> : 
         <Link 
         to='/'
-        className="header__signin"
-        >Sign in</Link>}
+        className="header__login"
+        >Login</Link>}
     </header>
   );
 };

@@ -60,21 +60,22 @@ const App = () => {
       <Router>
         <Layout user={user} handleLogout={handleLogout}>
           <Routes>
-            {isAuth ? (
-              <Route
-                path="kitty"
-                element={
-                  <ProtectedRoute user={user}>
-                    <ContentPage url={imgUrl} />
-                  </ProtectedRoute>
-                }
-              />
-            ) : (
-              <Route
-                path="*"
-                element={<LoginPage handleLogin={handleLogin} />}
-              />
-            )}
+            <Route
+              exact
+              path="/"
+              element={isAuth ? 
+                <Navigate to='/kitty' element ={<ContentPage url={imgUrl}/>}/> : 
+                <LoginPage handleLogin={handleLogin}/>
+              }
+            />
+            <Route
+              path="/kitty"
+              element={
+                <ProtectedRoute user={user}>
+                  <ContentPage url={imgUrl} />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </Layout>
       </Router>
