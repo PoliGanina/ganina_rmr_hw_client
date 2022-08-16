@@ -15,7 +15,7 @@ const Header = ({user, handleLogout}) => {
           <li className="header__menu-item"><a className="header__menu-link" href="#">Documentation</a></li>
       </menu>
 
-    { user ? <PersonalAccount user={user} handleLogout={handleLogout}/> : 
+    { user ? <PersonalAccount name={user.name} handleLogout={handleLogout}/> : 
         <Link 
         to='/'
         className="header__signin"

@@ -7,9 +7,9 @@ const FormComponent = ({onSubmit}) => {
   return (
     <Formik
       initialValues={{
-        email: "",
-        phone: "",
-        password: "",
+        email: "masha@gmail.com",
+        phone: "+79853453322",
+        password: "lolkekkkk",
       }}
       validationSchema={ VALIDATION_SCHEMA }
       onSubmit={onSubmit}

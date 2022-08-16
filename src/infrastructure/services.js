@@ -1,35 +1,24 @@
 import axios from "axios";
 
-// const instance = axios.create({
-//   withCredentials: true,
-//   baseURL: "http://51.250.65.73/api/v1",
-// });
+export const BASE_API = "http://localhost:3000";
 
-export const login = (formValues) => {
+export const login = async (formValues) => {
   try {
-    axios.post("/api/v1/login", formValues).then(async (res) => {
-      if (res.status === 200) {
-        console.log(res.status);
-
-        const profile = await axios.get(
-          "/api/v1/profile"
-        );
-        console.log(profile.data);
-        return profile.data;
-      }
-    });
+    return await axios.post("/api/v1/login", formValues);
   } catch (error) {
     alert("Sorry, you are not registered");
   }
 };
 
+export const getUserData = async () => {
+  return await axios.get("/api/v1/profile");
+};
+
 export const logout = () => {
-  axios
-    .post("/api/v1/logout")
-    .then((res) => {
-      console.log(res);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  axios.post("/api/v1/logout");
+};
+
+export const getImgUrl = async () => {
+  const res = await axios.get("/api/v1/kitty");
+  return res.data.data.src;
 };

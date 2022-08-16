@@ -1,0 +1,11 @@
+.content{
+    &__box {
+    height: 400px;
+    width: 400px; 
+    }
+    &__img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+}
