@@ -1,6 +1,6 @@
 import Layout from "./screens/layout";
 // import RouterComponent from "./infrastructure/router";
-import { ProtectedRoute } from "./infrastructure/router";
+import RouterComponent from "./infrastructure/router";
 import { useEffect, useState } from "react";
 import {
   BASE_API,
@@ -59,24 +59,7 @@ const App = () => {
     <div className="app">
       <Router>
         <Layout user={user} handleLogout={handleLogout}>
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={isAuth ? 
-                <Navigate to='/kitty' element ={<ContentPage url={imgUrl}/>}/> : 
-                <LoginPage handleLogin={handleLogin}/>
-              }
-            />
-            <Route
-              path="/kitty"
-              element={
-                <ProtectedRoute user={user}>
-                  <ContentPage url={imgUrl} />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
+          <RouterComponent user={user} handleLogin={handleLogin} url={imgUrl}/>
         </Layout>
       </Router>
     </div>
