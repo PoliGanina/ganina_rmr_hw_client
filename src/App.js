@@ -1,5 +1,4 @@
 import Layout from "./screens/layout";
-// import RouterComponent from "./infrastructure/router";
 import RouterComponent from "./infrastructure/router";
 import { useEffect, useState } from "react";
 import {
@@ -10,10 +9,7 @@ import {
   logout,
 } from "./infrastructure/services";
 import { BrowserRouter as Router } from "react-router-dom";
-import { Routes, Route, Navigate } from "react-router-dom";
-import "./App.css";
-import LoginPage from "./screens/loginPage/loginPage";
-import ContentPage from "./screens/contentPage.js/contentPage";
+import "./App.scss";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -59,7 +55,7 @@ const App = () => {
     <div className="app">
       <Router>
         <Layout user={user} handleLogout={handleLogout}>
-          <RouterComponent user={user} handleLogin={handleLogin} url={imgUrl}/>
+          <RouterComponent user={user} handleLogin={handleLogin} url={imgUrl} />
         </Layout>
       </Router>
     </div>
