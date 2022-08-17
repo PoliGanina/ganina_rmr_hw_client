@@ -1,4 +1,4 @@
-import logoPlaceholder from './../../UI library/logoplaceholder.svg';
+import logoPlaceholder from '../../uikit/logoplaceholder.svg';
 import { Link } from 'react-router-dom';
 import './header.scss';
 

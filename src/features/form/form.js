@@ -1,5 +1,5 @@
 import { Formik, Form } from "formik";
-import { MyTextInput } from "../../UI library/myTextInput";
+import { MyTextInput } from "../../uikit/myTextInput";
 import { VALIDATION_SCHEMA } from "./form.consts";
 import "./form.scss";
 
