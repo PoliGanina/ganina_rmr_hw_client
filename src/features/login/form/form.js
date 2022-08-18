@@ -1,9 +1,11 @@
 import { Formik, Form } from "formik";
-import { MyTextInput } from "../../uikit/myTextInput";
+import { MyTextInput } from "../../../uikit/myTextInput";
+import { useLogin } from "../context/useLogin";
 import { VALIDATION_SCHEMA } from "./form.consts";
 import "./form.scss";
 
-const FormComponent = ({onSubmit}) => {
+const FormComponent = () => {
+  const { handleLogin } = useLogin();
   return (
     <Formik
       initialValues={{
@@ -11,11 +13,11 @@ const FormComponent = ({onSubmit}) => {
         phone: "+79853453322",
         password: "lolkekkkk",
       }}
-      validationSchema={ VALIDATION_SCHEMA }
-      onSubmit={onSubmit}
+      validationSchema={VALIDATION_SCHEMA}
+      onSubmit={handleLogin}
     >
       <Form className="form">
-        <h1>login</h1>
+        <h1 className="form__header">login</h1>
         <MyTextInput label="Email" id="email" name="email" type="email" />
         <MyTextInput
           label="Phone number"

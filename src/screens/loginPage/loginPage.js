@@ -1,7 +1,7 @@
-import FormComponent from "../../features/form/form";
+import FormComponent from "../../features/login/form/form";
 
-const LoginPage = ({ handleLogin }) => {
-  return <FormComponent onSubmit={handleLogin} />;
+const LoginPage = () => {
+  return <FormComponent />;
 };
 
 export default LoginPage;

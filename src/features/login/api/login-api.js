@@ -1,6 +1,5 @@
 import axios from "axios";
 
-export const BASE_API = "http://localhost:3000";
 
 export const login = async (formValues) => {
   try {
@@ -18,7 +17,3 @@ export const logout = () => {
   axios.post("/api/v1/logout");
 };
 
-export const getImgUrl = async () => {
-  const res = await axios.get("/api/v1/kitty");
-  return res.data.data.src;
-};

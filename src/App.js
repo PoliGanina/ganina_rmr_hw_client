@@ -1,63 +1,57 @@
-import Layout from "./screens/layout";
-import RouterComponent from "./infrastructure/router";
-import { useEffect, useState } from "react";
-import {
-  BASE_API,
-  getImgUrl,
-  getUserData,
-  login,
-  logout,
-} from "./infrastructure/services";
+import { useEffect, useLayoutEffect, useState, } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+import Layout from "./features/layout/layout";
+import RouterComponent from "./infrastructure/router";
+import { getUserData } from "./features/login/api/login-api";
+import { getImgUrl } from "./features/kitty/kitty.api";
+import { useLogin } from "./features/login/context/useLogin";
 import "./App.scss";
 
+
 const App = () => {
-  const [user, setUser] = useState(null);
-  const [isAuth, setIsAuth] = useState(false);
+  const {user, setUser} = useLogin();
   const [imgUrl, setImgUrl] = useState("");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const fetchData = async () => {
       const userData = await getUserData();
       if (!userData) {
         return;
       }
       setUser(userData.data.data);
-      setIsAuth(true);
     };
     fetchData();
   }, []);
 
   useEffect(() => {
     const fetchUrl = async () => {
-      const imgEndpoint = await getImgUrl();
-      const url = `${BASE_API}${imgEndpoint}`;
+      const url = await getImgUrl();
       setImgUrl(url);
     };
     fetchUrl();
-  }, [isAuth]);
+  }, [user]);
 
-  const handleLogin = ({ email, password, phone }) => {
-    login({ email, password, phone }).then(async () => {
-      const userData = await getUserData();
-      setUser(userData.data.data);
-      setIsAuth(true);
-    });
-  };
+  // const handleLogin = ({ email, password, phone }) => {
+  //   login({ email, password, phone }).then(async () => {
+  //     const userData = await getUserData();
+  //     setUser(userData.data.data);
+  //   });
+  // };
 
-  const handleLogout = () => {
-    logout();
-    setUser(null);
-    setIsAuth(false);
-  };
+  // const handleLogout = () => {
+  //   logout();
+  //   setUser(null);
+  // };
 
   return (
     <div className="app">
-      <Router>
-        <Layout user={user} handleLogout={handleLogout}>
-          <RouterComponent user={user} handleLogin={handleLogin} url={imgUrl} />
-        </Layout>
-      </Router>
+        <Router>
+          <Layout>
+            <RouterComponent
+              url={imgUrl}
+            />
+          </Layout>
+        </Router>
     </div>
   );
 };
