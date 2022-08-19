@@ -18,13 +18,13 @@
     font-size: 20px;
     text-transform: uppercase;
   }
-  & label {
+  &__label {
     display: block;
     margin-top: 25px;
     font-size: 16px;
     font-weight: bold;
   }
-  & input {
+  &__input {
     width: 100%;
     height: 50px;
     margin-top: 10px;
@@ -39,10 +39,10 @@
       height: 40px;
     }
   }
-  & input:focus {
+  &__input:focus {
     outline: 1px solid rgba(87, 143, 156, 0.39);
   }
-  & button {
+  &__button {
     display: block;
     width: 180px;
     padding: 15px;
@@ -66,5 +66,12 @@
     font-size: 14px;
     color: #e53e3e;
     margin-top: 8px;
+    &__login {
+      text-align: center;
+      font-size: 14px;
+      color: #e53e3e;
+      margin-top: 15px;
+    }
   }
+  
 }

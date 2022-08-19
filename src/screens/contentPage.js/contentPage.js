@@ -1,10 +1,12 @@
 import Kitty from "../../features/kitty/kitty";
+
 import "./contentPage.scss";
 
-const ContentPage = ({ url }) => {
+const ContentPage = () => {
+
   return (
     <div className="content">
-      <Kitty url={url} />
+      <Kitty />
     </div>
   );
 };

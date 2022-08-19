@@ -5,7 +5,7 @@ import { VALIDATION_SCHEMA } from "./form.consts";
 import "./form.scss";
 
 const FormComponent = () => {
-  const { handleLogin } = useLogin();
+  const { errorMessage, loading, handleLogin,  } = useLogin();
   return (
     <Formik
       initialValues={{
@@ -18,6 +18,9 @@ const FormComponent = () => {
     >
       <Form className="form">
         <h1 className="form__header">login</h1>
+        {
+          errorMessage && <h2 className='error__login'>{errorMessage}</h2>
+        }
         <MyTextInput label="Email" id="email" name="email" type="email" />
         <MyTextInput
           label="Phone number"
@@ -31,7 +34,7 @@ const FormComponent = () => {
           name="password"
           type="password"
         />
-        <button type="submit">Отправить</button>
+        <button className="form__button" disabled={loading? true : false} type="submit">Отправить</button>
       </Form>
     </Formik>
   );

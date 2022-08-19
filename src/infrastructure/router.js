@@ -4,8 +4,8 @@ import NoAccessMessage from "../features/no-access/noAccessMessage";
 import ContentPage from "../screens/contentPage.js/contentPage";
 import LoginPage from "../screens/loginPage/loginPage";
 
-const RouterComponent = ({ url }) => {
-  const { user, handleLogin } = useLogin();
+const RouterComponent = () => {
+  const { user } = useLogin();
   return (
     <Routes>
       <Route
@@ -13,17 +13,17 @@ const RouterComponent = ({ url }) => {
         path="/"
         element={
           user ? (
-            <Navigate to="/kitty" element={<ContentPage url={url} />} />
+            <Navigate to="/kitty" element={<ContentPage />} />
           ) : (
-            <LoginPage handleLogin={handleLogin} />
+            <LoginPage />
           )
         }
       />
       <Route
         path="/kitty"
         element={
-          <ProtectedRoute user={user}>
-            <ContentPage url={url} />
+          <ProtectedRoute>
+            <ContentPage />
           </ProtectedRoute>
         }
       />
@@ -31,7 +31,9 @@ const RouterComponent = ({ url }) => {
   );
 };
 
-export const ProtectedRoute = ({ user, children }) => {
+export const ProtectedRoute = ({ children }) => {
+  const { user } = useLogin();
+
   if (!user) {
     return <NoAccessMessage />;
   }
