@@ -7,7 +7,7 @@ export const login = async (formValues) => {
     return res.status;
   } catch (error) {
     let errorMessage =
-      "The email, phone and password you entered didn't match our records. Please double-check and try again.";
+      "User not found. Please double-check entry data and try again.";
 
     return errorMessage;
   }

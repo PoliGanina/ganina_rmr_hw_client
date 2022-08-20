@@ -61,6 +61,14 @@
       transition: 0.5s all;
       transform: scale(1.05);
     }
+    &:disabled {
+      background-image: none;
+      background-color: #cccccc;
+      color: #666666;
+    }
+    &:disabled:hover {
+      transform: none;
+    }
   }
   & .error {
     font-size: 14px;

@@ -2,6 +2,8 @@
     &__box {
     height: 400px;
     width: 400px; 
+    display: flex;
+    justify-content: center;
     }
     &__img {
         height: 100%;
