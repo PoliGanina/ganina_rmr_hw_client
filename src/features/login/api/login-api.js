@@ -6,10 +6,16 @@ export const login = async (formValues) => {
 
     return res.status;
   } catch (error) {
-    let errorMessage =
-      "User not found. Please double-check entry data and try again.";
+    if (error.response.status === 401) {
+      let expectedError =
+        "User not found. Please double-check entry data and try again.";
 
-    return errorMessage;
+      return expectedError;
+    }
+    console.log(error.response.status);
+    let unexpectedError = "Something went wrong. Please check your Internet connection or try again later.";
+
+    return unexpectedError;
   }
 };
 
