@@ -1,14 +1,14 @@
+import { useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Layout from "./features/layout/layout";
 import RouterComponent from "./infrastructure/router";
 import { ImgUrlProvider } from "./features/kitty/context/imgUrlProvider";
-import "./App.scss";
-import { useEffect } from "react";
 import { getUserData } from "./features/login/api/login-api";
 import { useLogin } from "./features/login/context/useLogin";
+import "./App.scss";
 
 const App = () => {
-  const { setUser } = useLogin();
+  const { setUser, setHasCookie } = useLogin();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,7 +16,8 @@ const App = () => {
       if (!userData) {
         return;
       }
-      setUser(userData);
+      setUser(userData.data);
+      setHasCookie(userData.hasCookie);
     };
     fetchData();
   }, []);

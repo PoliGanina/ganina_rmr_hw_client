@@ -4,14 +4,15 @@ import { LoginContext } from "./useLogin";
 
 export const LoginProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [hasCookie, setHasCookie] = useState(undefined);
   const [errorMessage, setErrorMessage] = useState(null);
   const [logging, setLogging] = useState(false);
 
-
   const processLoginRes = async (res) => {
     if (res === 200) {
-      setUser(await getUserData());
-      
+      let userData = await getUserData();
+      setUser(userData.data);
+      setHasCookie(userData.hasCookie);
       return;
     }
     setErrorMessage(res);
@@ -36,10 +37,10 @@ export const LoginProvider = ({ children }) => {
       value={{
         user,
         setUser,
+        hasCookie,
+        setHasCookie,
         errorMessage,
-        setErrorMessage,
         logging,
-        setLogging,
         handleLogin,
         handleLogout,
       }}

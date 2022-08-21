@@ -12,7 +12,6 @@ export const login = async (formValues) => {
 
       return expectedError;
     }
-    console.log(error.response.status);
     let unexpectedError = "Something went wrong. Please check your Internet connection or try again later.";
 
     return unexpectedError;
@@ -23,9 +22,10 @@ export const getUserData = async () => {
   try {
     let res = await axios.get("/api/v1/profile");
 
-    return res.data.data;
+    return {data: res.data.data, hasCookie: true } ;
   } catch (error) {
-    throw new Error(error.message);
+    
+    return {data: null, hasCookie: false };
   }
 };
 

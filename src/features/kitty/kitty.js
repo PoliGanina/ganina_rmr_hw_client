@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useImgUrl } from "../../features/kitty/context/useImgUrl";
 import { useLogin } from "../login/context/useLogin";
 import { getImgUrl } from "./kitty.api";
@@ -22,13 +22,13 @@ const Kitty = () => {
 
 
   return (
-    <div className="content__box">
+    <>
       {loadingImg ? (
         <PulseLoader />
       ) : (
         <img src={imgUrl} alt="the cat" className="content__box" />
       )}
-    </div>
+    </>
   );
 };
 
