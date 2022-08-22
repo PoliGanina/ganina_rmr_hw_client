@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { Navigate } from "react-router";
 import { PulseLoader } from "react-spinners";
 import NoAccessMessage from "../features/no-access/noAccessMessage";
 import ContentPage from "../screens/contentPage/contentPage";
@@ -29,7 +30,9 @@ export const ProtectedRoute = ({ children }) => {
   }
 
   if (hasCookie === false ) {
-    return <NoAccessMessage />;
+    return(
+      <Navigate to="/" element={<LoginPage />} />
+    ) 
   }
 
   return children;
