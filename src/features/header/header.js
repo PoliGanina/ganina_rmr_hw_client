@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
+
 import { useLogin } from "../login/context/useLogin";
 import logoPlaceholder from "../../uikit/logoplaceholder.svg";
 import "./header.scss";
@@ -44,6 +46,10 @@ const Header = () => {
   );
 };
 
+Header.propTypes = {
+  user: PropTypes.object
+}
+
 export default Header;
 
 const PersonalAccount = () => {
@@ -57,3 +63,7 @@ const PersonalAccount = () => {
     </div>
   );
 };
+
+PersonalAccount.propTypes = {
+  user: PropTypes.object
+}

@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import { Formik, Form } from "formik";
+
 import { MyTextInput } from "../../../uikit/myTextInput";
 import { useLogin } from "../context/useLogin";
 import { VALIDATION_SCHEMA } from "./form.consts";
@@ -39,4 +41,10 @@ const FormComponent = () => {
     </Formik>
   );
 };
+
+FormComponent.propTypes = {
+  errorMessage: PropTypes.string,
+  logging: PropTypes.bool,
+  handleLogin: PropTypes.func
+}
 export default FormComponent;

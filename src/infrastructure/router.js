@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router";
 import { PulseLoader } from "react-spinners";
-import NoAccessMessage from "../features/no-access/noAccessMessage";
+
 import ContentPage from "../screens/contentPage/contentPage";
 import LoginPage from "../screens/loginPage/loginPage";
 import { useLogin } from "../features/login/context/useLogin";

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+
 import Layout from "./features/layout/layout";
 import RouterComponent from "./infrastructure/router";
 import { ImgUrlProvider } from "./features/kitty/context/imgUrlProvider";
