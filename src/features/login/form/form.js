@@ -36,7 +36,7 @@ const FormComponent = () => {
           name="password"
           type="password"
         />
-        <button className="form__button" disabled={logging? true : false} type="submit">Отправить</button>
+        <button className="form__button" disabled={logging? true : false} type="submit">Login</button>
       </Form>
     </Formik>
   );
