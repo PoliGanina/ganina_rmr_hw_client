@@ -1,20 +1,17 @@
 import axios from "axios";
 
+
+const errorExpected = "User not found. Please double-check entry data and try again.";
+const errorUnexpected = "Something went wrong. Please check your Internet connection or try again later.";
+
 export const login = async (formValues) => {
   try {
     let res = await axios.post("/api/v1/login", formValues);
 
     return res.status;
   } catch (error) {
-    if (error.response.status === 401) {
-      let expectedError =
-        "User not found. Please double-check entry data and try again.";
-
-      return expectedError;
-    }
-    let unexpectedError = "Something went wrong. Please check your Internet connection or try again later.";
-
-    return unexpectedError;
+    if (error.response.status === 401) return errorExpected;
+    return errorUnexpected;
   }
 };
 
