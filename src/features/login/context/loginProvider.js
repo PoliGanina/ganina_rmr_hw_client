@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { getUserData, login, logout } from "../api/login-api";
 import { LoginContext } from "./useLogin";
 
@@ -48,4 +49,8 @@ export const LoginProvider = ({ children }) => {
       {children}
     </LoginContext.Provider>
   );
+};
+
+LoginProvider.propTypes = {
+  children: PropTypes.node,
 };

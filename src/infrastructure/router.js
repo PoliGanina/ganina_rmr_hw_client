@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router";
 import { PulseLoader } from "react-spinners";
+import PropTypes from "prop-types";
 
 import ContentPage from "../screens/contentPage/contentPage";
 import LoginPage from "../screens/loginPage/loginPage";
@@ -29,13 +30,15 @@ export const ProtectedRoute = ({ children }) => {
     return <PulseLoader />;
   }
 
-  if (hasCookie === false ) {
-    return(
-      <Navigate to="/" element={<LoginPage />} />
-    ) 
+  if (hasCookie === false) {
+    return <Navigate to="/" element={<LoginPage />} />;
   }
 
   return children;
 };
 
 export default RouterComponent;
+
+ProtectedRoute.propTypes = {
+  children: PropTypes.node,
+};
