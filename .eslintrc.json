@@ -3,7 +3,7 @@
         "browser": true,
         "es2021": true
     },
-    "extends": "plugin:react/recommended",
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
     "overrides": [
     ],
     "parser": "@typescript-eslint/parser",
@@ -19,5 +19,10 @@
     "rules": {
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off"
+    },
+    "settings": {
+        "react": {
+            "version":"detect"
+        }
     }
 }

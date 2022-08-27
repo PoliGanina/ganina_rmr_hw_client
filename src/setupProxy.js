@@ -1,10 +1,11 @@
-const { createProxyMiddleware } = require('http-proxy-middleware');
+/* eslint-disable no-undef */
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
-module.exports = function(app) {
+module.exports = function (app) {
   app.use(
-    '/api/v1',
+    "/api/v1",
     createProxyMiddleware({
-      target: 'http://51.250.65.73',
+      target: "http://51.250.65.73",
       changeOrigin: true,
     })
   );
