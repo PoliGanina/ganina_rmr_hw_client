@@ -19,7 +19,7 @@ const FormComponent = () => {
       onSubmit={handleLogin}
     >
       <Form className="form">
-        <h2> TEST TEST TEST </h2>
+        <h2> O-LA-LA </h2>
         <h1 className="form__header">login</h1>
         {errorMessage && <h2 className="error__login">{errorMessage}</h2>}
         <MyTextInput label="Email" id="email" name="email" type="email" />
