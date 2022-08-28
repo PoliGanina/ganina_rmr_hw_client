@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Formik, Form } from "formik";
 
 import { MyTextInput } from "../../../uikit/myTextInput";
@@ -7,7 +7,7 @@ import { VALIDATION_SCHEMA } from "./form.consts";
 import "./form.scss";
 
 const FormComponent = () => {
-  const { errorMessage, logging, handleLogin,  } = useLogin();
+  const { errorMessage, logging, handleLogin } = useLogin();
   return (
     <Formik
       initialValues={{
@@ -19,10 +19,9 @@ const FormComponent = () => {
       onSubmit={handleLogin}
     >
       <Form className="form">
+        <h2> TEST TEST TEST </h2>
         <h1 className="form__header">login</h1>
-        {
-          errorMessage && <h2 className='error__login'>{errorMessage}</h2>
-        }
+        {errorMessage && <h2 className="error__login">{errorMessage}</h2>}
         <MyTextInput label="Email" id="email" name="email" type="email" />
         <MyTextInput
           label="Phone number"
@@ -36,7 +35,13 @@ const FormComponent = () => {
           name="password"
           type="password"
         />
-        <button className="form__button" disabled={logging? true : false} type="submit">Login</button>
+        <button
+          className="form__button"
+          disabled={logging ? true : false}
+          type="submit"
+        >
+          Login
+        </button>
       </Form>
     </Formik>
   );
@@ -45,6 +50,6 @@ const FormComponent = () => {
 FormComponent.propTypes = {
   errorMessage: PropTypes.string,
   logging: PropTypes.bool,
-  handleLogin: PropTypes.func
-}
+  handleLogin: PropTypes.func,
+};
 export default FormComponent;
